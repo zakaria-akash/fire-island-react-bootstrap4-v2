@@ -27,18 +27,13 @@ const Footer = (props) => {
           <div className="col-7 col-sm-5">
             <h5>Our Address</h5>
             <address>
-              121, Clear Water Bay Road
-              <br />
-              Clear Water Bay, Kowloon
-              <br />
-              HONG KONG
-              <br />
-              <i className="fa fa-phone fa-lg"></i>: +852 1234 5678
-              <br />
-              <i className="fa fa-fax fa-lg"></i>: +852 8765 4321
-              <br />
-              <i className="fa fa-envelope fa-lg"></i>:{" "}
-              <a href="mailto:zakaria.93@yahoo.com">confusion@food.net</a>
+              218/4, Babu Chowdhury Road<br />
+              Madaripur Sadar, Madaripur-7900<br />
+              Bangladesh<br />
+              <i className="fa fa-phone fa-lg"></i>: +8801319321363<br />
+              <i className="fa fa-fax fa-lg"></i>: +8801319321363<br />
+              <i className="fa fa-envelope fa-lg"></i>:
+              <a href="mailto:zakaria.93@yahoo.com">zakaria.93@yahoo.com</a>
             </address>
           </div>
           <div className="col-12 col-sm-4 align-self-center">
@@ -81,7 +76,7 @@ const Footer = (props) => {
         </div>
         <div className="row justify-content-center">
           <div className="col-auto">
-            <p>© Copyright 2018 Ristorante Con Fusion</p>
+            <p>© 2022 Zakaria Ibrahim</p>
           </div>
         </div>
       </div>
