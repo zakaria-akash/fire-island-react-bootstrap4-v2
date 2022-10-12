@@ -79,14 +79,14 @@ function About(props) {
             </CardHeader>
             <CardBody>
               <dl className="row p-1">
-                <dt class="col-6">Started</dt>
-                <dd class="col-6">December 3, 2020.</dd>
-                <dt class="col-6">Major Stake Holder</dt>
-                <dd class="col-6">BD Fine Foods Inc.</dd>
-                <dt class="col-6">Last Year's Turnover</dt>
-                <dd class="col-6">&#2547;9,50,375</dd>
-                <dt class="col-6">Employees</dt>
-                <dd class="col-6">40</dd>
+                <dt className="col-6">Started</dt>
+                <dd className="col-6">December 3, 2020.</dd>
+                <dt className="col-6">Major Stake Holder</dt>
+                <dd className="col-6">BD Fine Foods Inc.</dd>
+                <dt className="col-6">Last Year's Turnover</dt>
+                <dd className="col-6">&#2547;9,50,375</dd>
+                <dt className="col-6">Employees</dt>
+                <dd className="col-6">40</dd>
               </dl>
             </CardBody>
           </Card>
@@ -95,11 +95,11 @@ function About(props) {
           <Card>
             <CardBody className="bg-faded">
               <blockquote className="blockquote">
-                <p class="mb-0">
+                <p className="mb-0">
                   “A recipe has no soul. You, as the cook, must bring soul to
                   the recipe.”
                 </p>
-                <footer class="blockquote-footer">
+                <footer className="blockquote-footer">
                   Thomas Keller,
                   <cite title="Source Title">
                     American chef, restaurateur, and cookbook writer.
@@ -115,8 +115,8 @@ function About(props) {
           <h2>Corporate Leadership</h2>
         </div>
         <div className="col-12">
-        <hr />
-          <Media list>{leaders}</Media>}
+          <hr />
+          <Media list>{leaders}</Media>
         </div>
       </div>
     </div>
