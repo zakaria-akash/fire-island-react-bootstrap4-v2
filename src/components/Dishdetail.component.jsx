@@ -72,7 +72,7 @@ function RenderComments({ comments, toggleModal }) {
   }
 }
 
-function CommentForm({ isModalOpen, toggleModal }) {
+function CommentForm({ isModalOpen, toggleModal, addComment, dishId }) {
   return (
     <div>
       <Modal isOpen={isModalOpen} toggle={toggleModal}>
@@ -82,6 +82,7 @@ function CommentForm({ isModalOpen, toggleModal }) {
             onSubmit={(values) => {
               alert("Current State is: " + JSON.stringify(values));
               console.log("Current State is: " + JSON.stringify(values));
+              addComment(dishId, values.rating, values.author, values.comment);
             }}
           >
             <Row className="form-group">
@@ -210,6 +211,8 @@ class Dishdetail extends Component {
             <CommentForm
               isModalOpen={this.state.isModalOpen}
               toggleModal={this.toggleModal}
+              addComment={this.props.addComment}
+              dishId={this.props.dish.id}
             />
           </div>
         </div>

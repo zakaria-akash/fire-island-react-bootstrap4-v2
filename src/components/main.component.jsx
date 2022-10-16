@@ -9,14 +9,7 @@ import Dishdetail from "./Dishdetail.component";
 import Contact from "./contact.component";
 import Footer from "./footer.component";
 
-const mapStateToProps = (state) => {
-  return {
-    dishes: state.dishes,
-    comments: state.comments,
-    leaders: state.leaders,
-    promotions: state.promotions,
-  };
-};
+import { addComment } from "../redux/ActionCreators";
 
 const Main = (props) => {
   // constructor(props) {
@@ -36,9 +29,7 @@ const Main = (props) => {
     const featuredPromotion = props.promotions.filter(
       (promotion) => promotion.featured
     )[0];
-    const featuredLeader = props.leaders.filter(
-      (leader) => leader.featured
-    )[0];
+    const featuredLeader = props.leaders.filter((leader) => leader.featured)[0];
     return (
       <Home
         dish={featuredDish}
@@ -59,6 +50,7 @@ const Main = (props) => {
         comments={props.comments.filter(
           (comment) => comment.dishId === parseInt(match.params.dishId, 10)
         )}
+        addComment={props.addComment}
       />
     );
   };
@@ -87,4 +79,18 @@ const Main = (props) => {
   );
 };
 
-export default withRouter(connect(mapStateToProps)(Main));
+const mapStateToProps = (state) => {
+  return {
+    dishes: state.dishes,
+    comments: state.comments,
+    leaders: state.leaders,
+    promotions: state.promotions,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  addComment: (dishId, rating, author, comment) =>
+    dispatch(addComment(dishId, rating, author, comment)),
+});
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));
