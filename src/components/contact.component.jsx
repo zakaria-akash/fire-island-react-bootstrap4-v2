@@ -8,7 +8,7 @@ import {
   Row,
 } from "reactstrap";
 import { Link } from "react-router-dom";
-import { Control, LocalForm, Errors } from "react-redux-form";
+import { Control, Form, Errors, actions } from "react-redux-form";
 
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !val || val.length <= len;
@@ -17,12 +17,13 @@ const isNumber = (val) => !isNaN(Number(val));
 const validEmail = (val) =>
   /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
 
-const handleSubmitChange = (values) => {
+const handleSubmitChange = (values, resetFeedbackForm) => {
   console.log("Current State is: " + JSON.stringify(values));
   alert("Current State is: " + JSON.stringify(values));
+  resetFeedbackForm();
 };
 
-const Contact = () => {
+const Contact = (props) => {
   return (
     <div className="container">
       <div className="row">
@@ -92,7 +93,12 @@ const Contact = () => {
           <h3>Send us Your Feedback</h3>
         </div>
         <div className="col-12 col-md-9">
-          <LocalForm onSubmit={(values) => handleSubmitChange(values)}>
+          <Form
+            model="feedback"
+            onSubmit={(values) =>
+              handleSubmitChange(values, props.resetFeedbackForm)
+            }
+          >
             <Row className="form-group">
               <Label htmlFor="firstName" md={2}>
                 First Name
@@ -250,7 +256,7 @@ const Contact = () => {
                 </Button>
               </Col>
             </Row>
-          </LocalForm>
+          </Form>
         </div>
       </div>
     </div>
