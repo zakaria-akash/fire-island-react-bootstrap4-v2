@@ -12,7 +12,12 @@ import Dishdetail from "./Dishdetail.component";
 import Contact from "./contact.component";
 import Footer from "./footer.component";
 
-import { addComment, fetchDishes } from "../redux/ActionCreators";
+import {
+  addComment,
+  fetchDishes,
+  fetchComments,
+  fetchPromos,
+} from "../redux/ActionCreators";
 
 class Main extends Component {
   constructor(props) {
@@ -21,6 +26,8 @@ class Main extends Component {
 
   componentDidMount() {
     this.props.fetchDishes();
+    this.props.fetchComments();
+    this.props.fetchPromos();
   }
 
   render() {
@@ -28,7 +35,7 @@ class Main extends Component {
       const featuredDish = this.props.dishes.dishes.filter(
         (dish) => dish.featured
       )[0];
-      const featuredPromotion = this.props.promotions.filter(
+      const featuredPromotion = this.props.promotions.promotions.filter(
         (promotion) => promotion.featured
       )[0];
       const featuredLeader = this.props.leaders.filter(
@@ -41,6 +48,8 @@ class Main extends Component {
           leader={featuredLeader}
           dishesLoading={this.props.dishes.isLoading}
           dishesErrMess={this.props.dishes.errMess}
+          promosLoading={this.props.promotions.isLoading}
+          promosErrMess={this.props.promotions.errMess}
         />
       );
     };
@@ -55,9 +64,10 @@ class Main extends Component {
           }
           isLoading={this.props.dishes.isLoading}
           errMess={this.props.dishes.errMess}
-          comments={this.props.comments.filter(
+          comments={this.props.comments.comments.filter(
             (comment) => comment.dishId === parseInt(match.params.dishId, 10)
           )}
+          commentsErrMess={this.props.comments.errMess}
           addComment={this.props.addComment}
         />
       );
@@ -109,6 +119,12 @@ const mapDispatchToProps = (dispatch) => ({
   },
   fetchDishes: () => {
     dispatch(fetchDishes());
+  },
+  fetchComments: () => {
+    dispatch(fetchComments());
+  },
+  fetchPromos: () => {
+    dispatch(fetchPromos());
   },
   resetFeedbackForm: () => {
     dispatch(actions.reset("feedback"));
