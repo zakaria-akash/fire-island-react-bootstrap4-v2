@@ -83,7 +83,6 @@ function RenderComments({ comments, toggleModal }) {
     return (
       <div className="col-12 col-md-5 m-1">
         <h4>Comments</h4>
-        {/* <Stagger in>{comment}</Stagger> */}
         {comment}
         <Button outline onClick={toggleModal}>
           <i className="fa fa-pencil"></i> Submit Comment

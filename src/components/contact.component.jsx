@@ -17,9 +17,16 @@ const isNumber = (val) => !isNaN(Number(val));
 const validEmail = (val) =>
   /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
 
-const handleSubmitChange = (values, resetFeedbackForm) => {
-  console.log("Current State is: " + JSON.stringify(values));
-  alert("Current State is: " + JSON.stringify(values));
+const handleSubmitChange = (values, postFeedback, resetFeedbackForm) => {
+  postFeedback(
+    values.firstName,
+    values.lastName,
+    values.telNum,
+    values.email,
+    values.agree,
+    values.contactType,
+    values.message
+  );
   resetFeedbackForm();
 };
 
@@ -96,8 +103,13 @@ const Contact = (props) => {
           <Form
             model="feedback"
             onSubmit={(values) =>
-              handleSubmitChange(values, props.resetFeedbackForm)
+              handleSubmitChange(
+                values,
+                props.postFeedback,
+                props.resetFeedbackForm
+              )
             }
+            postFeedback={props.postFeedback}
           >
             <Row className="form-group">
               <Label htmlFor="firstName" md={2}>

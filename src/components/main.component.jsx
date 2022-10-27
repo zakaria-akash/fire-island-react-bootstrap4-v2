@@ -18,6 +18,8 @@ import {
   fetchDishes,
   fetchComments,
   fetchPromos,
+  fetchLeaders,
+  postFeedback,
 } from "../redux/ActionCreators";
 
 class Main extends Component {
@@ -29,6 +31,7 @@ class Main extends Component {
     this.props.fetchDishes();
     this.props.fetchComments();
     this.props.fetchPromos();
+    this.props.fetchLeaders();
   }
 
   render() {
@@ -39,7 +42,7 @@ class Main extends Component {
       const featuredPromotion = this.props.promotions.promotions.filter(
         (promotion) => promotion.featured
       )[0];
-      const featuredLeader = this.props.leaders.filter(
+      const featuredLeader = this.props.leaders.leaders.filter(
         (leader) => leader.featured
       )[0];
       return (
@@ -51,6 +54,8 @@ class Main extends Component {
           dishesErrMess={this.props.dishes.errMess}
           promosLoading={this.props.promotions.isLoading}
           promosErrMess={this.props.promotions.errMess}
+          leadersLoading={this.props.leaders.isLoading}
+          leadersErrMess={this.props.leaders.errMess}
         />
       );
     };
@@ -100,7 +105,10 @@ class Main extends Component {
                 exact
                 path="/contactus"
                 component={() => (
-                  <Contact resetFeedbackForm={this.props.resetFeedbackForm} />
+                  <Contact
+                    resetFeedbackForm={this.props.resetFeedbackForm}
+                    postFeedback={this.props.postFeedback}
+                  />
                 )}
               />
               <Redirect to="/home" />
@@ -135,8 +143,32 @@ const mapDispatchToProps = (dispatch) => ({
   fetchPromos: () => {
     dispatch(fetchPromos());
   },
+  fetchLeaders: () => {
+    dispatch(fetchLeaders());
+  },
   resetFeedbackForm: () => {
     dispatch(actions.reset("feedback"));
+  },
+  postFeedback: (
+    firstName,
+    lastName,
+    telNum,
+    email,
+    agree,
+    contactType,
+    message
+  ) => {
+    dispatch(
+      postFeedback(
+        firstName,
+        lastName,
+        telNum,
+        email,
+        agree,
+        contactType,
+        message
+      )
+    );
   },
 });
 

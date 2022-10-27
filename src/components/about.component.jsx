@@ -8,6 +8,9 @@ import {
   Media,
 } from "reactstrap";
 import { Link } from "react-router-dom";
+import { FadeTransform, Fade, Stagger } from "react-animation-components";
+
+import Loading from "./loading.component";
 
 function RenderLeader({ leader }) {
   if (leader == null) {
@@ -15,29 +18,50 @@ function RenderLeader({ leader }) {
   } else {
     return (
       <div key={leader.id} className="col-12 mt-5">
-        <Media tag="li">
-          <Media left middle>
-            <Media object src={leader.image} alt={leader.name} />
+        <Fade in>
+          <Media tag="li">
+            <Media left middle>
+              <Media object src={leader.image} alt={leader.name} />
+            </Media>
+            <Media body className="ml-5">
+              <Media heading>{leader.name}</Media>
+              <h3>{leader.designation}</h3>
+              <p>{leader.description}</p>
+            </Media>
           </Media>
-          <Media body className="ml-5">
-            <Media heading>{leader.name}</Media>
-            <h3>{leader.designation}</h3>
-            <p>{leader.description}</p>
-          </Media>
-        </Media>
+        </Fade>
       </div>
     );
   }
 }
 
 function About(props) {
-  const leaders = props.leaders.map((leader) => {
+  let leaders;
+  if (props.leaders.isLoading) {
     return (
-      <div key={leader.id}>
-        <RenderLeader leader={leader} />
+      <div className="container">
+        <div className="row">
+          <Loading />
+        </div>
       </div>
     );
-  });
+  } else if (props.leaders.errMess) {
+    return (
+      <div className="container">
+        <div className="row">
+          <h4>{props.leaders.errMess}</h4>
+        </div>
+      </div>
+    );
+  } else {
+    leaders = props.leaders.leaders.map((leader) => {
+      return (
+        <div key={leader.id}>
+          <RenderLeader leader={leader} />
+        </div>
+      );
+    });
+  }
 
   return (
     <div className="container">
@@ -110,13 +134,23 @@ function About(props) {
           </Card>
         </div>
       </div>
+
       <div className="row row-content">
         <div className="col-12">
           <h2>Corporate Leadership</h2>
         </div>
         <div className="col-12">
           <hr />
-          <Media list>{leaders}</Media>
+          <FadeTransform
+            in
+            transformProps={{
+              exitTransform: "scale(0.5) translateY(-50%)",
+            }}
+          >
+            <Stagger in>
+              <Media list>{leaders}</Media>
+            </Stagger>
+          </FadeTransform>
         </div>
       </div>
     </div>
