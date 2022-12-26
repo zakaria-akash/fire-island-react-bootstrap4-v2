@@ -1,5 +1,11 @@
 import * as ActionTypes from "./ActionTypes";
-import { baseUrl } from "../shared/baseUrl";
+import {
+  baseUrlDishes,
+  baseUrlComments,
+  baseUrlLeaders,
+  baseUrlPromotions,
+  baseUrlFeedback,
+} from "../shared/baseUrl";
 
 export const addComment = (comment) => ({
   type: ActionTypes.ADD_COMMENT,
@@ -15,7 +21,7 @@ export const postComment = (dishId, rating, author, comment) => (dispatch) => {
   };
   newComment.date = new Date().toISOString();
 
-  return fetch(baseUrl + "comments", {
+  return fetch(baseUrlComments, {
     method: "POST",
     body: JSON.stringify(newComment),
     headers: {
@@ -66,7 +72,7 @@ export const addDishes = (dishes) => ({
 export const fetchDishes = () => (dispatch) => {
   dispatch(dishesLoading(true));
 
-  return fetch(baseUrl + "dishes")
+  return fetch(baseUrlDishes)
     .then(
       (response) => {
         if (response.ok) {
@@ -101,7 +107,7 @@ export const addComments = (comments) => ({
 });
 
 export const fetchComments = () => (dispatch) => {
-  return fetch(baseUrl + "comments")
+  return fetch(baseUrlComments)
     .then(
       (response) => {
         if (response.ok) {
@@ -142,7 +148,7 @@ export const addPromos = (promotions) => ({
 export const fetchPromos = () => (dispatch) => {
   dispatch(promosLoading(true));
 
-  return fetch(baseUrl + "promotions")
+  return fetch(baseUrlPromotions)
     .then(
       (response) => {
         if (response.ok) {
@@ -183,7 +189,7 @@ export const addLeaders = (leaders) => ({
 export const fetchLeaders = () => (dispatch) => {
   dispatch(leadersLoading(true));
 
-  return fetch(baseUrl + "leaders")
+  return fetch(baseUrlLeaders)
     .then(
       (response) => {
         if (response.ok) {
@@ -226,7 +232,7 @@ export const postFeedback =
     };
     newFeedback.date = new Date().toISOString();
 
-    return fetch(baseUrl + "feedback", {
+    return fetch(baseUrlFeedback, {
       method: "POST",
       body: JSON.stringify(newFeedback),
       headers: {

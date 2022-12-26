@@ -7,7 +7,7 @@ import {
   CardTitle,
   CardSubtitle,
 } from "reactstrap";
-import { baseUrl } from "../shared/baseUrl";
+
 import { FadeTransform } from "react-animation-components";
 
 import Loading from "./loading.component";
@@ -27,7 +27,7 @@ const Home = (props) => {
           }}
         >
           <Card>
-            <CardImg src={baseUrl + item.image} alt={item.name} />
+            <CardImg src={item.image} alt={item.name} />
             <CardBody>
               <CardTitle>{item.name}</CardTitle>
               {item.designation ? (
