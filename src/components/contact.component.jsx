@@ -52,18 +52,27 @@ const Contact = (props) => {
         <div className="col-12 col-sm-4 offset-sm-1">
           <h5>Our Address</h5>
           <address>
-            121, Clear Water Bay Road
+            218/4, Babu Chowdhury Road
             <br />
-            Clear Water Bay, Kowloon
+            Madaripur Sadar, Madaripur-7900
             <br />
-            HONG KONG
+            Bangladesh
             <br />
-            <i className="fa fa-phone"></i>: +852 1234 5678
+            <i className="fa fa-phone fa-lg"></i>: +8801319321363
             <br />
-            <i className="fa fa-fax"></i>: +852 8765 4321
+            <i className="fa fa-fax fa-lg"></i>: +8801319321363
             <br />
-            <i className="fa fa-envelope"></i>:{" "}
-            <a href="mailto:confusion@food.net">confusion@food.net</a>
+            <i className="fa fa-envelope fa-lg"></i>:
+            <a href="mailto:zakaria.93@yahoo.com"> zakaria.93@yahoo.com</a>
+            <div className="col-auto">
+              <a
+                href="https://github.com/zakaria-akash"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                © 2022 Zakaria Ibrahim
+              </a>
+            </div>
           </address>
         </div>
         <div className="col-12 col-sm-6 offset-sm-1">

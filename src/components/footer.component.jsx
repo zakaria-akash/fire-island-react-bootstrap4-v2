@@ -27,13 +27,18 @@ const Footer = (props) => {
           <div className="col-7 col-sm-5">
             <h5>Our Address</h5>
             <address>
-              218/4, Babu Chowdhury Road<br />
-              Madaripur Sadar, Madaripur-7900<br />
-              Bangladesh<br />
-              <i className="fa fa-phone fa-lg"></i>: +8801319321363<br />
-              <i className="fa fa-fax fa-lg"></i>: +8801319321363<br />
+              218/4, Babu Chowdhury Road
+              <br />
+              Madaripur Sadar, Madaripur-7900
+              <br />
+              Bangladesh
+              <br />
+              <i className="fa fa-phone fa-lg"></i>: +8801319321363
+              <br />
+              <i className="fa fa-fax fa-lg"></i>: +8801319321363
+              <br />
               <i className="fa fa-envelope fa-lg"></i>:
-              <a href="mailto:zakaria.93@yahoo.com">zakaria.93@yahoo.com</a>
+              <a href="mailto:zakaria.93@yahoo.com"> zakaria.93@yahoo.com</a>
             </address>
           </div>
           <div className="col-12 col-sm-4 align-self-center">
@@ -76,7 +81,13 @@ const Footer = (props) => {
         </div>
         <div className="row justify-content-center">
           <div className="col-auto">
-            <p>© 2022 Zakaria Ibrahim</p>
+            <a
+              href="https://github.com/zakaria-akash"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              © 2022 Zakaria Ibrahim
+            </a>
           </div>
         </div>
       </div>

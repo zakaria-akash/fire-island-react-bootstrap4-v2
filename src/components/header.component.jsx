@@ -123,6 +123,12 @@ class Header extends Component {
                   tickle your culinary senses!
                 </p>
               </div>
+              <div className="col-12 col-sm-6">
+                <img
+                  src="/assets/images/logo.png"
+                  alt="company-logo"
+                />
+              </div>
             </div>
           </div>
         </Jumbotron>
